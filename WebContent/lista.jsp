@@ -22,16 +22,10 @@
 	href="css/startbootstrap-one-page-wonder-gh-pages/css/one-page-wonder.css"
 	rel="stylesheet">
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
 
-	<!-- Navigation -->
+<!-- Navigation -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -48,12 +42,14 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="lista.jsp">Pregledaj zivotinje</a></li>
+				<!-- 				<li><a href="lista.jsp">Pregledaj zivotinje</a></li> -->
+				<li><a href="listasvih"
+					>Pregledaj zivotinje &raquo;</a></li>
 				<li><a href="dodaj.jsp">Dodaj zivotinje</a></li>
 				<li><a href="contact.jsp">Kontakt</a></li>
 			</ul>
-			<form class="navbar-form navbar-left" role="search" action="search"
-				method="post">
+			<form class="navbar-form navbar-left" role="pretrazivanje" action="pretrazivanje"
+				method="get">
 				<div class="form-group">
 					<input type="text" class="form-control"
 						placeholder="Pretrazuj zivotinje" name="name">
@@ -90,12 +86,13 @@
 			<tbody>
 
 				<c:forEach items="${zivotinje}" var="zivotinja" varStatus="counter">
+				<br>
 					<tr>
 						<td>${counter.count}</td>
 						<td>${zivotinja.vrsta}</td>
 						<td>${zivotinja.kratakOpis}</td>
-						<td><a href="edit?id=${zivotinja.id}">Uredi</a></td>
-						<td><a href="delete?id=${zivotinja.id}">Obrisi</a></td>
+						<td><a style="color:black;" href="uredi?id=${zivotinja.id}" >Uredi</a></td>
+						<td><a style="color:black;"  href="obrisi?id=${zivotinja.id}">Obrisi</a></td>
 						<td></td>
 
 					</tr>

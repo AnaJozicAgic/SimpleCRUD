@@ -77,17 +77,21 @@
 	</div>
   <div class="container">
         <div class="card card-container">
-            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" />
+
             <p id="profile-name" class="profile-name-card"></p>
-            <form class="form-signin"  action="dodaj" method="post">
+            <form class="form-signin" id="uredi" action="uredi" method="post">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="text" name="vrsta" class="form-control" placeholder="vrsta zivotinje" required autofocus>
-                <textarea type="text" name="kratakOpis" placeholder="Kratak opis" required cols="40" rows = "3"></textarea>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Unesi</button>
-            </form><!-- /form -->
-        </div><!-- /card-container -->
-    </div><!-- /container -->
+                <input type="text" id="vrsta" name="vrsta" class="form-control" placeholder="${zivotinja.getVrsta()}" required autofocus></input>
+                <textarea type="text" id="kratakOpis" name="kratakOpis" placeholder="${zivotinja.getKratakOpis()}" required cols="40" rows = "3"></textarea>
+                
+                <input type="hidden"
+						name="id" value="${zivotinja.getId()}"/>
+                <input type="submit" value="Submit" /> 
+            </form>
+        </div>
+    </div>
+
 
 
 	<!-- Footer -->

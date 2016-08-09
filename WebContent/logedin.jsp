@@ -48,12 +48,14 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="lista.jsp">Pregledaj zivotinje</a></li>
+				<!-- 				<li><a href="lista.jsp">Pregledaj zivotinje</a></li> -->
+				<li><a href="listasvih"
+					>Pregledaj zivotinje &raquo;</a></li>
 				<li><a href="dodaj.jsp">Dodaj zivotinje</a></li>
 				<li><a href="contact.jsp">Kontakt</a></li>
 			</ul>
-			<form class="navbar-form navbar-left" role="search" action="search"
-				method="post">
+			<form class="navbar-form navbar-left" role="pretrazivanje" action="pretrazivanje"
+				method="get">
 				<div class="form-group">
 					<input type="text" class="form-control"
 						placeholder="Pretrazuj zivotinje" name="name">

@@ -29,4 +29,11 @@ public class Zivotinja {
 		this.kratakOpis = kratakOpis;
 	}
 
+	@Override
+	public String toString() {
+		return "Zivotinja [id=" + id + ", vrsta=" + vrsta + ", kratakOpis=" + kratakOpis + "]";
+	}
+	
+	
+
 }

@@ -13,23 +13,25 @@ import modelCrud.bo.ZivotinjaBo;
 import modelCrud.dto.Korisnik;
 import modelCrud.dto.Zivotinja;
 
-@WebServlet("/listasvih")
-public class ListaSvih extends HttpServlet {
+/**
+ * Servlet implementation class Pretrazivanje
+ */
+@WebServlet("/pretrazivanje")
+public class Pretrazivanje extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public ListaSvih() {
+	public Pretrazivanje() {
 		super();
-
+		// TODO Auto-generated constructor stub
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		Korisnik korisnik = (Korisnik) request.getSession(false).getAttribute("korisnik");
-
+		String unesenoUpretragu = request.getParameter("name");
 		ZivotinjaBo bo = new ZivotinjaBo();
 
-		List<Zivotinja> zivotinje = bo.izlistajSve();
+		List<Zivotinja> zivotinje = bo.pretraziZivotinje(unesenoUpretragu);
 
 		request.setAttribute("zivotinje", zivotinje);
 		request.getSession().setAttribute("korisnik", korisnik);

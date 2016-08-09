@@ -14,7 +14,7 @@ public class ZivotinjaBo implements Create<Zivotinja>, Read<Zivotinja>, Update<Z
 	private ZivotinjaDao dao = new ZivotinjaDao();
 
 	@Override
-	public void delete(Zivotinja objekat) throws SQLException {
+	public void delete(Zivotinja objekat) {
 		try {
 			dao.delete(objekat);
 		} catch (SQLException e) {
@@ -24,7 +24,7 @@ public class ZivotinjaBo implements Create<Zivotinja>, Read<Zivotinja>, Update<Z
 	}
 
 	@Override
-	public void update(Zivotinja objekat, String name) throws SQLException {
+	public void update(Zivotinja objekat, String name) {
 		try {
 			dao.update(objekat, name);
 
@@ -35,7 +35,7 @@ public class ZivotinjaBo implements Create<Zivotinja>, Read<Zivotinja>, Update<Z
 	}
 
 	@Override
-	public Zivotinja read(Zivotinja objekat){
+	public Zivotinja read(Zivotinja objekat) {
 		Zivotinja zivotinja = null;
 		try {
 			zivotinja = dao.read(objekat);
@@ -65,13 +65,16 @@ public class ZivotinjaBo implements Create<Zivotinja>, Read<Zivotinja>, Update<Z
 		return zivotinje;
 	}
 
-	public List<Zivotinja> izlistajSve(){
-		List<Zivotinja> zivotinje= null;
-		
+	public List<Zivotinja> izlistajSve() {
+		List<Zivotinja> zivotinje = null;
+
 		try {
 			zivotinje = dao.izlistajSve();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+		if (zivotinje == null) {
+			System.out.println("AU pm");
 		}
 		return zivotinje;
 	}

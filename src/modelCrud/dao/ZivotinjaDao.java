@@ -29,15 +29,15 @@ public class ZivotinjaDao implements Create<Zivotinja>, Read<Zivotinja>, Update<
 
 	@Override
 	public void delete(Zivotinja objekat) throws SQLException {
-		String query = "DELETE FROM zivotinja WHERE id=?";
+		String query = "DELETE FROM zivotinja WHERE vrsta=?";
 		PreparedStatement statement = connection.prepareStatement(query);
-		statement.setInt(1, objekat.getId());
+		statement.setString(1, objekat.getVrsta());
 		statement.executeUpdate();
 	}
 
 	@Override
 	public void update(Zivotinja objekat, String name) throws SQLException {
-		String query = "UPDATE zivotinja SET (vrsta, kratatkOpis) VALUES (?,?) WHERE vrsta =?";
+		String query = "UPDATE zivotinja SET vrsta=?, kratakOpis=? WHERE vrsta =?";
 		PreparedStatement statement = connection.prepareStatement(query);
 		statement.setString(1, objekat.getVrsta());
 		statement.setString(2, objekat.getKratakOpis());
@@ -59,7 +59,7 @@ public class ZivotinjaDao implements Create<Zivotinja>, Read<Zivotinja>, Update<
 			zivotinja = new Zivotinja();
 			zivotinja.setId(rs.getInt("id"));
 			zivotinja.setVrsta(rs.getString("vrsta"));
-			zivotinja.setKratakOpis("kratakOpis");
+			zivotinja.setKratakOpis(rs.getString("kratakOpis"));
 
 			rs.close();
 		}
@@ -71,7 +71,7 @@ public class ZivotinjaDao implements Create<Zivotinja>, Read<Zivotinja>, Update<
 	public List<Zivotinja> izlistajSve() throws SQLException {
 		List<Zivotinja> zivotinje = new ArrayList<>();
 		Zivotinja zivotinja = null;
-		String query = "SELECT * FOROM zivotinja ";
+		String query = "SELECT * FROM zivotinja ";
 		PreparedStatement statement = connection.prepareStatement(query);
 
 		ResultSet rs = statement.executeQuery();
@@ -79,7 +79,7 @@ public class ZivotinjaDao implements Create<Zivotinja>, Read<Zivotinja>, Update<
 			zivotinja = new Zivotinja();
 			zivotinja.setId(rs.getInt("id"));
 			zivotinja.setVrsta(rs.getString("vrsta"));
-			zivotinja.setKratakOpis("kratakOpis");
+			zivotinja.setKratakOpis(rs.getString("kratakOpis"));
 
 			zivotinje.add(zivotinja);
 		}
@@ -91,7 +91,7 @@ public class ZivotinjaDao implements Create<Zivotinja>, Read<Zivotinja>, Update<
 	public List<Zivotinja> pretraziZivotinje(String unesenoUpretragu) throws SQLException {
 		List<Zivotinja> zivotinje = new ArrayList<>();
 		Zivotinja zivotinja = null;
-		String query = "SELECT * FROM zivotinje WHERE vrsta LIKE ?";
+		String query = "SELECT * FROM zivotinja WHERE vrsta LIKE ?";
 		PreparedStatement statment = connection.prepareStatement(query);
 		statment.setString(1, "%" + unesenoUpretragu + "%");
 		ResultSet rs = statment.executeQuery();
